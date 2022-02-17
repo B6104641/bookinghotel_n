@@ -1,0 +1,117 @@
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css%22%3E">
+<div >
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&family=Teko&display=swap" rel="stylesheet">
+    <div class="card-body ">
+        <div  id="addproduct" class="row" >
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8 ">
+                <form [formGroup]="productForm">
+                    <div class="card">
+                        <div class="card-header">
+                            Room Adding Form
+                        </div>
+                        <div class="card-body" id = "aad">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    Room Tpye:
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <select class="form-control" formControlName="type">
+                                          <option value="">--Select your room's type--</option>
+                                          <option *ngFor="let item of productType" [value]="item">{{item}}</option>
+                                        </select>
+                                      </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-3">
+                                    Room Name:
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                      <input type="text" class="form-control" formControlName='name'>
+                                      <div *ngIf="(fromdata.name.dirty || fromdata.name.touched)" id="sign">
+                                        <div *ngIf="fromdata.name.errors?.required" class="alert alert-danger">
+                                          Name is required
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    Room Detail:
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                      <input type="text" class="form-control" formControlName='detail'>
+                                      <div *ngIf="(fromdata.detail.dirty || fromdata.detail.touched)" id="sign">
+                                        <div *ngIf="fromdata.detail.errors?.required" class="alert alert-danger">
+                                          Detail is required
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                    
+                            <div class="row">
+                                <div class="col-md-3">
+                                    Room Price:
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                      <input type="number" class="form-control" formControlName='price'>
+                                      <div *ngIf="(fromdata.price.dirty || fromdata.price.touched)" id="sign">
+                                        <div *ngIf="fromdata.price.errors?.required" class="alert alert-danger">
+                                          Price is required
+                                        </div>
+                                        <div *ngIf="fromdata.price.value < 0" class="alert alert-danger">
+                                           Price can't lower than 0                                         </div>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    Room Picture:
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                      <input type="file" class="form-control-file" formControlName='file' (change)="onChangeImg($event)">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                </div>
+                                <div class="col-md-9">
+                                    <img *ngIf="previewLoaded" class="img-thumbnail" [src]="this.productForm.value.img" style="height:150px;">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="modal-footer" id = "aad">
+                                    <p align="center">
+                                            <button type="button" class="btn btn-primary ; w3-button w3-white w3-border w3-border-blue w3-round-large"
+                                                    (click)="addProduct()">Add</button>&nbsp;
+                                            <button type="reset" class="btn btn-danger ; w3-button w3-white w3-border w3-border-red w3-round-large" 
+                                                    (click)="resetForm()">Reset</button>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-8">
+            </div>
+        </div>
+    </div>
+</div>
+

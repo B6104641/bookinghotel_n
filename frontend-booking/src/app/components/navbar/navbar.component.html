@@ -1,0 +1,45 @@
+
+<!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block bg-dark navbar-dark" style="z-index: 2000;">
+        <div class="container-fluid">
+          <!-- Navbar brand -->
+          <a class="navbar-brand nav-link">
+            <strong>LUXURY</strong>
+          </a>
+          <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
+            aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarExample01">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item active">
+                <a class="nav-link" aria-current="page" href="#intro">Home</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" aria-current="page" href="#intro" routerLink="showproducts" routerLinkActive="active">Rooms</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" aria-current="page" href="#intro" routerLink="contact" routerLinkActive="active">Contact</a>
+              </li>
+            </ul>
+
+           <ul class="navbar-nav d-flex flex-row">
+               <a  *ngIf="local.get('user') != null" class="nav-link" routerLink="order"
+                    routerLinkActive="active">Order</a>
+                <a  *ngIf="getRole() == 'admin'" class="nav-link" routerLink="admin"
+                    routerLinkActive="active">Client</a>
+                <a  *ngIf="getRole() == 'admin'" class="nav-link" routerLink="addproduct"
+                    routerLinkActive="active">Add Rooms</a>
+                <a *ngIf="local.get('user') != null" class="nav-link">{{getUser()}}</a>
+                <a id="login" *ngIf="local.get('user') == null" class="nav-link" routerLink="signin"
+                    routerLinkActive="active">Login</a>
+                <a *ngIf="local.get('user') != null" class="nav-link" routerLink=""
+                    routerLinkActive="active" (click)="logout()">Logout</a>
+                <a class="nav-link" routerLink="cart" routerLinkActive="active">
+                    <i class="fa fa-shopping-cart"> <span class="badge w3-text-orange"></span></i>
+                </a>
+            </ul> 
+          </div>
+        </div>
+      </nav>
+      <!-- Navbar -->
